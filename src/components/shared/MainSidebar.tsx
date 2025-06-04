@@ -1,3 +1,4 @@
+
 'use client';
 
 import type React from 'react';
@@ -10,12 +11,14 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuSkeleton,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import AppLogo from './AppLogo';
 import { LayoutDashboard, Bell, Search, Settings, LogOut, BarChart3 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { auth } from '@/lib/firebase';
+import { signOut } from 'firebase/auth';
+import { useToast } from "@/hooks/use-toast";
+
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -28,9 +31,17 @@ const navItems = [
 const MainSidebar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const { toast } = useToast();
 
-  const handleLogout = () => {
-    router.push('/');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast({ title: "Logged Out", description: "You have been successfully logged out." });
+      router.push('/');
+    } catch (error: any) {
+      console.error("Logout failed:", error);
+      toast({ title: "Logout Failed", description: error.message || "Could not log out.", variant: "destructive" });
+    }
   };
 
   const isNavItemActive = (href: string) => {
