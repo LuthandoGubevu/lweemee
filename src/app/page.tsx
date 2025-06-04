@@ -8,13 +8,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import AppLogo from '@/components/shared/AppLogo';
-import { Mail, Lock, UserPlus } from 'lucide-react';
+import { Mail, Lock, User } from 'lucide-react'; // Changed UserPlus to User
 import { auth } from '@/lib/firebase';
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  type User
+  updateProfile, // Added updateProfile
+  type User as FirebaseUser // Renamed to avoid conflict with Lucide User icon
 } from 'firebase/auth';
 import { useToast } from "@/hooks/use-toast";
 
@@ -23,12 +24,13 @@ export default function LoginPage() {
   const { toast } = useToast();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState(''); // Added fullName state
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+    const unsubscribe = onAuthStateChanged(auth, (user: FirebaseUser | null) => {
       if (user) {
         router.push('/dashboard');
       }
@@ -43,7 +45,12 @@ export default function LoginPage() {
 
     try {
       if (isSignUpMode) {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        if (userCredential.user) {
+          await updateProfile(userCredential.user, {
+            displayName: fullName,
+          });
+        }
         toast({ title: "Account Created", description: "Successfully signed up! Redirecting to dashboard..." });
         router.push('/dashboard');
       } else {
@@ -89,6 +96,7 @@ export default function LoginPage() {
     setError(null);
     setEmail('');
     setPassword('');
+    setFullName(''); // Clear fullName on mode toggle
   };
 
   return (
@@ -107,6 +115,23 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleAuthAction} className="space-y-6">
+            {isSignUpMode && (
+              <div className="space-y-2">
+                <Label htmlFor="fullName">Full Name</Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    id="fullName"
+                    type="text"
+                    placeholder="Your Full Name"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required={isSignUpMode}
+                    className="pl-10"
+                  />
+                </div>
+              </div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -134,6 +159,7 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="pl-10"
+                  minLength={isSignUpMode ? 6 : undefined}
                 />
               </div>
             </div>
