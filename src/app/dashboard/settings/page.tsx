@@ -12,14 +12,14 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle className="font-headline">Application Settings</CardTitle>
           <CardDescription>
-            Configure your Mzansi Insights experience. This section will include options for profile management, notification preferences, connected accounts, and more.
+            Configure your Lweemee experience. This section will include options for profile management, notification preferences, connected accounts, and more.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center min-h-[300px] text-center">
           <Cog className="h-16 w-16 text-primary mb-4 animate-spin-slow" />
           <h3 className="text-xl font-semibold mb-2 font-headline">Settings Page Under Construction</h3>
           <p className="text-muted-foreground max-w-md">
-            We are currently developing this section. Soon you will be able to customize various aspects of your Mzansi Insights account.
+            We are currently developing this section. Soon you will be able to customize various aspects of your Lweemee account.
           </p>
         </CardContent>
       </Card>

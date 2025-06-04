@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Mzansi Insights',
+  title: 'Lweemee',
   description: 'Social listening platform for South Africa',
 };
 

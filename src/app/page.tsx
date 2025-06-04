@@ -82,7 +82,7 @@ export default function LoginPage() {
         </CardFooter>
       </Card>
       <p className="mt-8 text-center text-xs text-muted-foreground">
-        &copy; {new Date().getFullYear()} Mzansi Insights. All rights reserved.
+        &copy; {new Date().getFullYear()} Lweemee. All rights reserved.
       </p>
     </main>
   );

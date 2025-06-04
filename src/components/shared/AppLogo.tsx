@@ -12,7 +12,7 @@ const AppLogo: React.FC<AppLogoProps> = ({ className, iconSize = 24, textSize = 
     <div className={`flex items-center gap-2 ${className}`}>
       <ScatterChart size={iconSize} className="text-primary" />
       <h1 className={`font-headline font-bold ${textSize} text-foreground`}>
-        Mzansi Insights
+        Lweemee
       </h1>
     </div>
   );
