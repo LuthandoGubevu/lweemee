@@ -1,6 +1,7 @@
+
 'use client';
 
-import type React from 'react';
+import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import type { DateRange } from 'react-day-picker';
+import { Card, CardContent } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
 
 const FilterControls: React.FC = () => {
@@ -104,9 +107,4 @@ const FilterControls: React.FC = () => {
   );
 };
 
-// Minimal Card and Label for FilterControls context if not globally available
-import { Card, CardContent } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-
 export default FilterControls;
-
