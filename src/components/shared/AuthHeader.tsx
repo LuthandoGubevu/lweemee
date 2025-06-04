@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { LogOut, UserCircle, Settings, Bell, SidebarTrigger as SidebarToggleIcon } from 'lucide-react';
+import { LogOut, UserCircle, Settings, Bell, PanelLeft as SidebarToggleIcon } from 'lucide-react';
 import { useSidebar } from '@/components/ui/sidebar';
 import { auth } from '@/lib/firebase';
 import { signOut, onAuthStateChanged, type User } from 'firebase/auth';

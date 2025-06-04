@@ -1,7 +1,7 @@
 import type React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Twitter, Newspaper, Reddit, Youtube, MessageSquare, Globe, ThumbsUp, Meh, ThumbsDown } from 'lucide-react';
+import { Twitter, Newspaper, Youtube, MessageSquare, Globe, ThumbsUp, Meh, ThumbsDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -28,7 +28,7 @@ const PlatformIcon: React.FC<{ platform: Mention['platform'] }> = ({ platform })
     case 'Twitter': return <Twitter {...iconProps} />;
     case 'News24':
     case 'IOL': return <Newspaper {...iconProps} />;
-    case 'Reddit': return <Reddit {...iconProps} />;
+    case 'Reddit': return <MessageSquare {...iconProps} />; // Use MessageSquare for Reddit
     case 'YouTube': return <Youtube {...iconProps} />;
     case 'Forum': return <MessageSquare {...iconProps} />;
     case 'Blog': return <Globe {...iconProps} />;

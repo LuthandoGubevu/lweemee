@@ -1,6 +1,6 @@
 'use client';
 import type React from 'react';
-import { Smile, MessageCircle, TrendingUp, Search, Filter, ListFilter, ThumbsUp, Meh, ThumbsDown, Newspaper, Twitter as TwitterIcon, Youtube as YoutubeIcon, Reddit as RedditIcon, MessageSquare as ForumIcon, Globe as BlogIcon } from 'lucide-react';
+import { Smile, MessageCircle, TrendingUp, Search, Filter, ListFilter, ThumbsUp, Meh, ThumbsDown, Newspaper, Twitter as TwitterIcon, Youtube as YoutubeIcon, MessageSquare as ForumIcon, Globe as BlogIcon } from 'lucide-react';
 import StatCard from '@/components/dashboard/StatCard';
 import SentimentChart from '@/components/dashboard/SentimentChart';
 import KeywordCloud from '@/components/dashboard/KeywordCloud';
