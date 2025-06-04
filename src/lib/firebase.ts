@@ -8,7 +8,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDK7bBQJLgyjAQrdouiXb98hKvuj7Ztz18",
   authDomain: "lweemee-bc86d.firebaseapp.com",
   projectId: "lweemee-bc86d",
-  storageBucket: "lweemee-bc86d.appspot.com", // Corrected common typo: .appspot.com
+  storageBucket: "lweemee-bc86d.appspot.com", // Ensures correct .appspot.com domain
   messagingSenderId: "144275657841",
   appId: "1:144275657841:web:e2dfca0a509459e85077d0",
   measurementId: "G-3P6T2LP1H4"
